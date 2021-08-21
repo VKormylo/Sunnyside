@@ -1,3 +1,27 @@
+// ---------------------------
+// -------- VARIABLES --------
+// ---------------------------
+
+@mixin frauncesBold() {
+    font-family: "Fraunces", sans-serif;
+    font-weight: 900;
+}
+
+$soft-red: #fe7867;
+$soft-yellow: #fad400;
+
+$desaturated-cyan: #25564b;
+$moderate-cyan: #82c9ba;
+
+$grayish-blue: #a7abae;
+$dark-grayish-blue: #818498;
+$very-dark-grayish-blue: #5a636c;
+
+$dark-blue: #19536b;
+$dark-desaturated-blue: #23303e;
+
+$white: #fff;
+
 * {
     box-sizing: border-box;
 }
@@ -12,14 +36,18 @@ li {
 }
 
 a {
-    color: #fff;
+    color: $white;
     text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     padding: 0;
-    color: hsl(232, 10%, 55%);
+    color: $dark-grayish-blue;
     font-size: 18px;
     font-family: "Barlow", sans-serif;
 }
@@ -48,6 +76,16 @@ body {
         }
     }
 
+    .header-top.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        background-color: $dark-desaturated-blue;
+        padding: 20px 40px;
+    }
+
     .header-menu.visible {
         transform: translateX(0);
     }
@@ -57,6 +95,7 @@ body {
     }
 
     .header-menu__item a {
+        cursor: pointer;
         position: relative;
         transition: 0.3s;
         padding-bottom: 2px;
@@ -67,8 +106,8 @@ body {
             content: "";
             transform-origin: right;
             transform: scaleX(0);
-            border-bottom: solid 2px #fff;
-            background-color: #fff;
+            border-bottom: solid 2px $white;
+            background-color: $white;
         }
 
         &:not(.header-menu__item--btn a):hover::after {
@@ -85,15 +124,16 @@ body {
         font-size: 14px;
         font-family: "Fraunces", serif;
         text-transform: uppercase;
-        background-color: #fff;
-        color: hsl(212, 27%, 19%);
+        background-color: $white;
+        border: 2px solid $white;
+        color: $dark-desaturated-blue;
         padding: 15px 20px;
         border-radius: 100px;
         transition: 0.3s;
 
         &:hover {
-            color: #fff;
-            background-color: hsl(212, 27%, 19%);
+            color: $white;
+            background-color: $dark-desaturated-blue;
         }
     }
 
@@ -102,19 +142,31 @@ body {
     }
 
     .header-title {
-        color: #fff;
+        color: $white;
         margin-top: 200px;
         text-transform: uppercase;
         text-align: center;
         font-size: 46px;
-        font-family: "Fraunces", serif;
-        font-weight: 900;
+        @include frauncesBold();
         letter-spacing: 10px;
     }
 
     .arrow {
         text-align: center;
         margin-top: 100px;
+        animation: arrowDown .5s 3s 3 ease-out;
+
+        @keyframes arrowDown {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
     }
 
     @media (max-width: 768px) {
@@ -126,7 +178,7 @@ body {
             position: absolute;
             left: 0;
             top: 0;
-            background-color: hsl(212, 27%, 19%);
+            background-color: $dark-desaturated-blue;
             height: 90vh;
             width: 80%;
             transition: 0.3s ease-out;
@@ -183,10 +235,9 @@ body {
 
         &__title {
             width: 350px;
-            font-family: "Fraunces", serif;
-            font-weight: 900;
+            @include frauncesBold();
             font-size: 32px;
-            color: hsl(212, 27%, 19%);
+            color: $dark-desaturated-blue;
         }
 
         &__text {
@@ -198,11 +249,10 @@ body {
         &__btn {
             position: relative;
             cursor: pointer;
-            font-family: "Fraunces", serif;
-            font-weight: 900;
+            @include frauncesBold();
             font-size: 14px;
             text-transform: uppercase;
-            color: hsl(212, 27%, 19%);
+            color: $dark-desaturated-blue;
 
             &::after {
                 position: absolute;
@@ -222,11 +272,11 @@ body {
             }
 
             &.red::after {
-                background-color: hsl(51, 100%, 49%);
+                background-color: $soft-yellow;
             }
 
             &.yellow::after {
-                background-color: hsl(7, 99%, 70%);
+                background-color: $soft-red;
             }
         }
 
@@ -305,7 +355,7 @@ body {
         background-image: url(./images/desktop/image-graphic-design.jpg);
         .design-item__title,
         .design-item__text {
-            color: hsl(167, 40%, 24%);
+            color: $desaturated-cyan;
         }
     }
 
@@ -313,7 +363,7 @@ body {
         background-image: url(./images/desktop/image-photography.jpg);
         .design-item__title,
         .design-item__text {
-            color: hsl(198, 62%, 26%);
+            color: $dark-blue;
         }
     }
 
@@ -344,7 +394,7 @@ body {
         font-family: "Fraunces", serif;
         text-transform: uppercase;
         font-size: 20px;
-        color: hsl(210, 4%, 67%);
+        color: $grayish-blue;
         letter-spacing: 3px;
     }
 
@@ -365,14 +415,13 @@ body {
 
         &__text {
             width: 350px;
-            color: hsl(213, 9%, 39%);
+            color: $very-dark-grayish-blue;
         }
 
         &__name {
-            font-family: "Fraunces", serif;
-            font-weight: 900;
+            @include frauncesBold();
             margin: 50px 0 10px 0;
-            color: hsl(212, 27%, 19%);
+            color: $dark-desaturated-blue;
         }
 
         &__job {
@@ -424,7 +473,7 @@ body {
 
 .footer {
     padding: 60px 0;
-    background-color: hsl(167, 40%, 65%);
+    background-color: $moderate-cyan;
 
     .footer-menu {
         display: flex;
@@ -448,11 +497,11 @@ body {
         }
         .footer-menu__item a {
             transition: 0.3s;
-            color: hsl(167, 40%, 24%);
+            color: $desaturated-cyan;
         }
 
         .footer-menu__item a:hover {
-            color: #fff;
+            color: $white;
         }
     }
 
@@ -469,7 +518,7 @@ body {
         }
 
         &__icon:hover svg path {
-            fill: #fff;
+            fill: $white;
         }
 
         .socials__icon + .socials__icon {

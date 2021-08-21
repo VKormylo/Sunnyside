@@ -12,6 +12,9 @@ a {
   color: #fff;
   text-decoration: none; }
 
+html {
+  scroll-behavior: smooth; }
+
 body {
   margin: 0;
   padding: 0;
@@ -37,11 +40,20 @@ body {
     padding: 0 20px; }
     .header .header-top .logo {
       cursor: pointer; }
+  .header .header-top.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background-color: #23303e;
+    padding: 20px 40px; }
   .header .header-menu.visible {
     transform: translateX(0); }
   .header .header-menu__items {
     display: flex; }
   .header .header-menu__item a {
+    cursor: pointer;
     position: relative;
     transition: 0.3s;
     padding-bottom: 2px; }
@@ -63,6 +75,7 @@ body {
     font-family: "Fraunces", serif;
     text-transform: uppercase;
     background-color: #fff;
+    border: 2px solid #fff;
     color: #23303e;
     padding: 15px 20px;
     border-radius: 100px;
@@ -78,12 +91,20 @@ body {
     text-transform: uppercase;
     text-align: center;
     font-size: 46px;
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", sans-serif;
     font-weight: 900;
     letter-spacing: 10px; }
   .header .arrow {
     text-align: center;
-    margin-top: 100px; }
+    margin-top: 100px;
+    animation: arrowDown .5s 3s 3 ease-out; }
+@keyframes arrowDown {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(20px); }
+  100% {
+    transform: translateY(0); } }
   @media (max-width: 768px) {
     .header .header-title {
       padding: 0 20px;
@@ -126,7 +147,7 @@ body {
     justify-self: center; }
   .features .features-item__title {
     width: 350px;
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", sans-serif;
     font-weight: 900;
     font-size: 32px;
     color: #23303e; }
@@ -137,7 +158,7 @@ body {
   .features .features-item__btn {
     position: relative;
     cursor: pointer;
-    font-family: "Fraunces", serif;
+    font-family: "Fraunces", sans-serif;
     font-weight: 900;
     font-size: 14px;
     text-transform: uppercase;
@@ -246,7 +267,7 @@ body {
       width: 350px;
       color: #5a636c; }
     .testimonials-item__name {
-      font-family: "Fraunces", serif;
+      font-family: "Fraunces", sans-serif;
       font-weight: 900;
       margin: 50px 0 10px 0;
       color: #23303e; }
